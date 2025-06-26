@@ -4,9 +4,6 @@
   font-size: 11px;
   text-align: center;
 }
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
 @font-face {
   font-family: "young serif";
   src: local("young serif") url(../assets/fonts/young-serif/YoungSerif-Regular.ttf);
@@ -24,10 +21,7 @@
       "Courier New", monospace;
     --spacing: 0.25rem;
     --container-xs: 20rem;
-    --container-sm: 24rem;
     --container-4xl: 56rem;
-    --text-xs: 0.75rem;
-    --text-xs--line-height: calc(1 / 0.75);
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-lg: 1.125rem;
@@ -40,6 +34,7 @@
     --text-3xl--line-height: calc(2.25 / 1.875);
     --text-5xl: 3rem;
     --text-5xl--line-height: 1;
+    --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
@@ -55,6 +50,7 @@
     --color-Brown-800: hsl(14, 45%, 36%);
     --color-Rose-800: hsl(332, 51%, 32%);
     --color-Rose-50: hsl(330, 100%, 98%);
+    --color-Blue: hsl(228, 45%, 44%);
     --font-Young: "young serif";
     --font-Outfit: "Outfit";
   }
@@ -226,14 +222,23 @@
       max-width: 96rem;
     }
   }
+  .m-5 {
+    margin: calc(var(--spacing) * 5);
+  }
   .mx-6 {
     margin-inline: calc(var(--spacing) * 6);
   }
-  .my-5 {
-    margin-block: calc(var(--spacing) * 5);
+  .mx-8 {
+    margin-inline: calc(var(--spacing) * 8);
+  }
+  .mx-auto {
+    margin-inline: auto;
   }
   .mr-8 {
     margin-right: calc(var(--spacing) * 8);
+  }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
   }
   .mb-3 {
     margin-bottom: calc(var(--spacing) * 3);
@@ -256,17 +261,8 @@
   .flex {
     display: flex;
   }
-  .inline {
-    display: inline;
-  }
   .table {
     display: table;
-  }
-  .w-32 {
-    width: calc(var(--spacing) * 32);
-  }
-  .w-56 {
-    width: calc(var(--spacing) * 56);
   }
   .w-xs {
     width: var(--container-xs);
@@ -280,38 +276,17 @@
   .list-inside {
     list-style-position: inside;
   }
+  .list-decimal {
+    list-style-type: decimal;
+  }
   .list-disc {
     list-style-type: disc;
-  }
-  .break-after-left {
-    break-after: left;
   }
   .flex-col {
     flex-direction: column;
   }
-  .flex-row {
-    flex-direction: row;
-  }
-  .place-content-start {
-    place-content: start;
-  }
-  .place-items-center {
-    place-items: center;
-  }
-  .items-baseline {
-    align-items: baseline;
-  }
   .items-center {
     align-items: center;
-  }
-  .justify-around {
-    justify-content: space-around;
-  }
-  .justify-between {
-    justify-content: space-between;
-  }
-  .justify-center {
-    justify-content: center;
   }
   .space-y-3 {
     :where(& > :not(:last-child)) {
@@ -334,6 +309,17 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .border-b-1 {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
+  .border-b-2 {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 2px;
+  }
+  .border-Stone-150 {
+    border-color: var(--color-Stone-150);
+  }
   .bg-Rose-50 {
     background-color: var(--color-Rose-50);
   }
@@ -346,23 +332,20 @@
   .px-7 {
     padding-inline: calc(var(--spacing) * 7);
   }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
+  }
+  .py-7 {
+    padding-block: calc(var(--spacing) * 7);
+  }
   .pb-4 {
     padding-bottom: calc(var(--spacing) * 4);
   }
-  .pl-3 {
-    padding-left: calc(var(--spacing) * 3);
-  }
-  .text-center {
-    text-align: center;
+  .pl-6 {
+    padding-left: calc(var(--spacing) * 6);
   }
   .text-left {
     text-align: left;
-  }
-  .text-right {
-    text-align: right;
-  }
-  .text-start {
-    text-align: start;
   }
   .font-Outfit {
     font-family: var(--font-Outfit);
@@ -386,10 +369,6 @@
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
   }
-  .text-xs {
-    font-size: var(--text-xs);
-    line-height: var(--tw-leading, var(--text-xs--line-height));
-  }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
@@ -398,15 +377,16 @@
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
   }
+  .font-normal {
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
+  }
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
   }
-  .break-keep {
-    word-break: keep-all;
-  }
-  .text-ellipsis {
-    text-overflow: ellipsis;
+  .text-Blue {
+    color: var(--color-Blue);
   }
   .text-Brown-800 {
     color: var(--color-Brown-800);
@@ -437,11 +417,6 @@
       margin-block: calc(var(--spacing) * 32);
     }
   }
-  .md\:ml-0 {
-    @media (width >= 48rem) {
-      margin-left: calc(var(--spacing) * 0);
-    }
-  }
   .md\:grid {
     @media (width >= 48rem) {
       display: grid;
@@ -450,6 +425,11 @@
   .md\:w-4xl {
     @media (width >= 48rem) {
       width: var(--container-4xl);
+    }
+  }
+  .md\:w-full {
+    @media (width >= 48rem) {
+      width: 100%;
     }
   }
   .md\:place-items-center {
@@ -465,6 +445,12 @@
   .md\:rounded-xl {
     @media (width >= 48rem) {
       border-radius: var(--radius-xl);
+    }
+  }
+  .md\:border-b-2 {
+    @media (width >= 48rem) {
+      border-bottom-style: var(--tw-border-style);
+      border-bottom-width: 2px;
     }
   }
   .md\:bg-Stone-150 {
@@ -487,6 +473,12 @@
       padding-inline: calc(var(--spacing) * 0);
     }
   }
+  .md\:text-3xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-3xl);
+      line-height: var(--tw-leading, var(--text-3xl--line-height));
+    }
+  }
   .md\:text-5xl {
     @media (width >= 48rem) {
       font-size: var(--text-5xl);
@@ -497,6 +489,18 @@
     @media (width >= 48rem) {
       font-size: var(--text-lg);
       line-height: var(--tw-leading, var(--text-lg--line-height));
+    }
+  }
+  .md\:text-xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-xl);
+      line-height: var(--tw-leading, var(--text-xl--line-height));
+    }
+  }
+  .md\:font-semibold {
+    @media (width >= 48rem) {
+      --tw-font-weight: var(--font-weight-semibold);
+      font-weight: var(--font-weight-semibold);
     }
   }
 }
